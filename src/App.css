@@ -1,0 +1,803 @@
+/* ------------------- */
+/* --- CSS VARIABLES & GLOBAL STYLES --- */
+/* ------------------- */
+:root {
+  --dark-purple: #1d003d; 
+  --hot-pink: #f23a9d;
+  --lime-green: #c1ff44;
+  --pure-white: #ffffff;
+  --main-font: 'Montserrat', sans-serif;
+}
+
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--dark-purple);
+  color: var(--pure-white);
+  font-family: var(--main-font);
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+  width: 90%;
+  max-width: 1440px; 
+  margin: 0 auto;
+}
+
+/* ------------------- */
+/* --- HEADER / NAVIGATION --- */
+/* ------------------- */
+/* ------------------- */
+/* --- HEADER / NAVIGATION --- */
+/* ------------------- */
+.main-header {
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+/* Modify main-nav to shift navbar further right */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  margin-left: auto; /* pushes nav to the right */
+  transform: translateX(200px); /* Significantly increased rightward shift */
+}
+
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  color: var(--pure-white);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--hot-pink);
+}
+
+.btn {
+  padding: 14px 28px;
+  font-family: var(--main-font);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--hot-pink);
+  color: var(--pure-white);
+  transition: all 0.3s ease;
+  border-radius: 10px; 
+}
+
+.btn:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}
+
+.nav-toggle {
+  display: none;
+}
+
+/* ------------------- */
+/* --- HERO SECTION --- */
+/* ------------------- */
+.hero-section {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Added a bit more gap for balance */
+  padding: 2rem 0;
+  min-height: 75vh;
+}
+
+.hero-content {
+  /* UPDATED: Adjusted flex-basis to balance with the smaller text */
+  flex: 0 0 45%; 
+}
+
+.hero-headline {
+  /* UPDATED: Reduced font size for the headline */
+  font-size: 5.25rem; 
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 2rem;
+}
+
+.hero-headline span {
+  display: block;
+}
+
+.hero-headline .color-pink { color: var(--hot-pink); }
+.hero-headline .color-green { color: var(--lime-green); }
+.hero-headline .color-white { color: var(--pure-white); }
+
+.hero-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 450px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-image {
+  flex: 1; 
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Shake Animation for Hero Image */
+@keyframes shake {
+  0%, 100% { transform: translateX(150px) rotate(0deg); }
+  10% { transform: translateX(152px) rotate(-1deg); }
+  20% { transform: translateX(148px) rotate(1deg); }
+  30% { transform: translateX(151px) rotate(-1deg); }
+  40% { transform: translateX(149px) rotate(1deg); }
+  50% { transform: translateX(150px) rotate(0deg); }
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: 80%;
+  object-fit: cover;
+  width: 700px; 
+  transform: translateX(150px);
+  
+  /* Shake animation on page load */
+  animation: shake 0.5s cubic-bezier(0.36, 0, 0.66, -0.56) 1;
+}
+
+/* ------------------- */
+/* --- RESPONSIVE DESIGN --- */
+/* ------------------- */
+
+@media (max-width: 500px) {
+  .hero-headline {
+      font-size: 4.5rem;
+  }
+  .hero-image img {
+      width: 100px;
+      transform: translateX(10px);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-headline {
+      font-size: 4rem;
+  }
+  .hero-image img {
+      width: 100px;
+      transform: translateX(20px);
+  }
+  .main-nav {
+      gap: 1.5rem;
+  }
+  .nav-links {
+      gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+      display: none;
+  }
+  .nav-toggle {
+      display: block;
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--pure-white);
+  }
+  .hero-section {
+      text-align: center;
+      padding-top: 1rem;
+      justify-content: center;
+  }
+  .hero-image {
+      display: none;
+  }
+  .hero-content {
+      flex-basis: 100%;
+  }
+  .hero-headline {
+      font-size: 3.5rem;
+  }
+  .hero-description {
+      margin-left: auto;
+      margin-right: auto;
+  }
+}
+
+
+.unlock-section {
+  position: relative;
+  text-align: center;
+  padding: 8rem 0;
+  overflow: hidden;
+  z-index: 0; /* ADD THIS LINE */
+}
+
+.unlock-content .event-date {
+  color: var(--lime-green);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.unlock-headline {
+  font-size: 6rem;
+  font-weight: 900;
+  line-height: 1;
+  /* This creates the purple text with white 'cutouts' effect */
+  color: #9040ff; /* A purple from the design */
+  text-shadow: 
+    -1px -1px 0 #FFF,  
+     1px -1px 0 #FFF,
+    -1px  1px 0 #FFF,
+     1px  1px 0 #FFF;
+  margin-bottom: 2.5rem;
+}
+
+/* A new style for outline buttons */
+.btn.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--pure-white);
+  color: var(--pure-white);
+}
+
+.btn.btn-outline:hover {
+  background-color: var(--pure-white);
+  color: var(--dark-purple);
+}
+
+.unlock-graphic {
+  position: absolute;
+  bottom: 0;
+  width: 350px;
+  z-index: -1; /* Places images behind the text content */
+}
+
+.unlock-graphic-left {
+  left: 0;
+}
+
+.unlock-graphic-right {
+  right: 0;
+  
+}
+
+.unlock-graphic img {
+  width: 100%;
+  height: auto;
+}
+
+
+/* --- Responsive styles for the new section --- */
+@media (max-width: 1200px) {
+  .unlock-graphic {
+    width: 280px;
+  }
+  .unlock-headline {
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  /* On smaller screens, hide the background graphics to avoid clutter */
+  .unlock-graphic {
+    display: none;
+  }
+  .unlock-section {
+    padding: 6rem 0;
+  }
+  .unlock-headline {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .unlock-headline {
+    font-size: 3.5rem;
+    text-shadow: none; /* Remove complex shadow on mobile for readability */
+    color: var(--pure-white); /* Change to simple white text */
+  }
+}
+/* ------------------- */
+/* --- SPEAKERS SECTION --- */
+/* ------------------- */
+.speakers-section {
+  padding: 8rem 0;
+  text-align: center;
+}
+
+.speakers-headline {
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1;
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.speakers-headline span {
+  display: block;
+}
+
+/* This creates the outlined 'OUR' text */
+.speakers-headline .outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--pure-white);
+}
+
+.speaker-carousel-container {
+  overflow: hidden; /* This is crucial to hide the non-visible slides */
+  margin-bottom: 2rem;
+}
+
+.speaker-carousel-track {
+  display: flex;
+  gap: 2rem;
+  /* Animate the track by moving it to the left */
+  animation: marquee-scroll 25s linear infinite;
+}
+
+/* Pause the animation when the user hovers over the carousel */
+.speaker-carousel-container:hover .speaker-carousel-track {
+  animation-play-state: paused;
+}
+
+.speaker-card {
+  flex-shrink: 0;
+  width: 280px;
+  text-align: left;
+}
+
+/* This applies the tilt effect to the first card in the original set */
+.speaker-card:first-child {
+  transform: rotate(-3deg);
+}
+
+.speaker-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.speaker-card h3 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.speaker-card p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--lime-green);
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 3rem;
+}
+
+.carousel-dots span {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+}
+
+.carousel-dots span.active {
+  background-color: var(--pure-white);
+}
+
+/* Keyframes for the continuous scrolling animation */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    /* Move the track left by the width of the original set of speakers */
+    transform: translateX(-50%);
+  }
+}
+
+/* --- Responsive styles for the Speakers section --- */
+@media (max-width: 768px) {
+  .speakers-headline {
+    font-size: 3.5rem;
+    text-align: center;
+  }
+  .speaker-card {
+    width: 220px;
+  }
+  .speaker-card img {
+    height: 280px;
+  }
+}
+
+/* ------------------- */
+/* --- EVENT STATS SECTION --- */
+/* ------------------- */
+.event-stats-section {
+  padding: 4rem 0;
+}
+
+.event-stats-section .container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #c962ff; /* A purple from the design */
+}
+
+.stat-label {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+
+/* ------------------- */
+/* --- SCHEDULE SECTION --- */
+/* ------------------- */
+.schedule-section {
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.schedule-headline {
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 2rem;
+}
+
+.schedule-headline span {
+  display: block;
+}
+
+.schedule-headline .outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--pure-white);
+}
+
+.schedule-description {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+.schedule-grid {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.schedule-day {
+  background-color: var(--hot-pink);
+  padding: 2rem;
+  text-align: left;
+  flex-basis: 300px; /* Base width for each card */
+  flex-grow: 1; /* Allow cards to grow and fill space */
+}
+
+.schedule-day .day-label {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.schedule-day h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.schedule-robot {
+  position: absolute;
+  right: -50px;
+  bottom: 0;
+  width: 150px;
+}
+
+/* --- Responsive styles for new sections --- */
+@media (max-width: 768px) {
+  .schedule-headline {
+    font-size: 3.5rem;
+  }
+  .schedule-robot {
+    display: none; /* Hide robot on mobile to avoid clutter */
+  }
+}
+/* ------------------- */
+/* --- SHARED STYLES --- */
+/* ------------------- */
+.section-headline {
+  font-size: 5rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+.section-description {
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+/* ------------------- */
+/* --- SPONSORS SECTION --- */
+/* ------------------- */
+.sponsors-section {
+  padding: 6rem 0;
+}
+
+.sponsors-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.sponsor-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  opacity: 0.8;
+  /* Adjust these properties if using <img> tags */
+}
+
+
+/* ------------------- */
+/* --- PRIZES SECTION --- */
+/* ------------------- */
+.prizes-section {
+  padding: 6rem 0;
+}
+
+.prizes-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.main-prize-card {
+  background-color: #6a00ff; /* A purple from the design */
+  padding: 3rem;
+  text-align: left;
+}
+
+.main-prize-card h3 {
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.main-prize-card .prize-amount {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--lime-green);
+  display: block;
+  margin: 1rem 0;
+}
+
+.small-prizes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.small-prize-card {
+  background-color: #6a00ff;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.small-prize-card img {
+  width: 60px;
+  height: 60px;
+}
+
+.small-prize-card .prize-amount {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--lime-green);
+  display: block;
+}
+
+/* Decorative Graphics */
+.prize-ticket-graphic {
+  position: absolute;
+  width: 200px;
+  left: -100px;
+  top: 50px;
+  transform: rotate(-15deg);
+}
+.prize-coin-graphic {
+  position: absolute;
+  width: 100px;
+  right: -50px;
+  bottom: 50px;
+}
+
+/* --- Responsive styles for new sections --- */
+@media (max-width: 900px) {
+  .prizes-grid {
+    grid-template-columns: 1fr; /* Stack the grid on smaller screens */
+  }
+  .prize-ticket-graphic, .prize-coin-graphic {
+    display: none; /* Hide decorative graphics to save space */
+  }
+}
+
+@media (max-width: 768px) {
+  .section-headline {
+    font-size: 3.5rem;
+  }
+  .sponsors-grid {
+    justify-content: center;
+  }
+}
+
+/* ------------------- */
+/* --- CONFERENCE PASS SECTION --- */
+/* ------------------- */
+.conference-pass-section {
+  padding: 8rem 0;
+}
+
+.headline-wrapper {
+  position: relative;
+}
+
+.pass-ticket-graphic {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 180px;
+  transform: rotate(10deg);
+}
+
+.pass-card {
+  background-color: var(--pure-white);
+  color: #000;
+  padding: 2.5rem;
+  margin-top: 2rem;
+}
+
+.pass-card h3 {
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.pass-card p {
+  opacity: 0.7;
+}
+
+.pass-details, .pass-purchase, .pass-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pass-price {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.pass-purchase {
+  gap: 1rem;
+}
+
+.quantity-input {
+  width: 50px;
+  height: 40px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.pass-divider {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 1.5rem 0;
+}
+
+.discount-input {
+  height: 50px;
+  border: 1px solid #ccc;
+  padding: 0 1rem;
+  font-size: 1rem;
+}
+
+/* ------------------- */
+/* --- FOOTER SECTION --- */
+/* ------------------- */
+.main-footer {
+  padding: 4rem 0 2rem;
+}
+
+.main-footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-tagline {
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.footer-tagline span {
+  display: block;
+}
+
+.footer-tagline span:last-child {
+  color: #555; /* A grey color from the design */
+  -webkit-text-stroke: 1px var(--pure-white);
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-links a {
+  color: var(--pure-white);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* --- Final Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .pass-ticket-graphic {
+    display: none;
+  }
+  .pass-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+}
